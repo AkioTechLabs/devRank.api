@@ -4,5 +4,5 @@ using devRank.Application.Responses.Auth;
 namespace devRank.Application.Requests.Auth;
 
 public record EsqueceSuaSenhaRequest(
-    long UsuarioId,
+    long Id,
     string Senha) : IRequestUseCase<LoginResponse>;

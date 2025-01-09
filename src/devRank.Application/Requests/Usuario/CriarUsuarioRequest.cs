@@ -8,4 +8,5 @@ public record CriarUsuarioRequest(
     string Nome,
     string Email,
     string Senha,
+    bool Avaliado,
     long PerfilId) : IRequestUseCase<LoginResponse>;

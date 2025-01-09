@@ -18,8 +18,4 @@
       <ProjectReference Include="..\devRank.Shared\devRank.Shared.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Validators\Auth\" />
-    </ItemGroup>
-
 </Project>

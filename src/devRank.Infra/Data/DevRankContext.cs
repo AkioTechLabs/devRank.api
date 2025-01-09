@@ -14,6 +14,7 @@ public class DevRankContext(DbContextOptions<DevRankContext> options) :
     public DbSet<PerfilPermissao> PerfilPermissao { get; set; }
     public DbSet<Permissao> Permissao { get; set; }
     public DbSet<Usuario> Usuario { get; set; }
+    public DbSet<UsuarioPonto> UsuarioPonto { get; set; }
     
     #endregion DbSet
 

@@ -13,10 +13,12 @@ public sealed class Usuario() : AuditEntity
     public string Senha { get; private set; } = string.Empty;
     public long PerfilId { get; private set; }
     public bool Ativo { get; private set; } = true;
-    
+    public bool Avaliado { get; private set; }
+
     #region Prop. Aux
 
     public Perfil Perfil { get; private set; }
+    public ICollection<UsuarioPonto> UsuarioPonto { get; private set; }
 
     #endregion Prop. Aux
 
@@ -28,13 +30,15 @@ public sealed class Usuario() : AuditEntity
         string nome,
         string email,
         string senha,
-        int perfilId) : this()
+        int perfilId,
+        bool avaliado) : this()
     {
         Nome = nome;
         Email = email;
         Senha = senha;
         PerfilId = perfilId;
         Ativo = true;
+        Avaliado = avaliado;
 
         CriptografarSenha();
         Validar();
