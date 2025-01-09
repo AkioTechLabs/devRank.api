@@ -1,4 +1,5 @@
 ﻿using devRank.Shared.Errors;
+using devRank.Shared.Expections;
 using FastResults.Errors;
 using FastResults.Results;
 using FluentValidation;
@@ -16,7 +17,7 @@ public class ValidationPipelineBehavior<TRequest, TResponse>(
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        List<Error> errors = fluentValidators
+        var erros = fluentValidators
             .Select(validator => validator.Validate(request))
             .SelectMany(result => result.Errors)
             .Where(error => error is not null)
@@ -24,21 +25,11 @@ public class ValidationPipelineBehavior<TRequest, TResponse>(
             .Distinct()
             .ToList();
 
-        if (errors.Any())
+        if (erros.Count != 0)
         {
-            CreatedErrors(errors);
+            throw new ValidacaoExpection(erros);
         }
 
         return await next();
-    }
-
-    private void CreatedErrors(List<Error> errors)
-    {
-        List<string> messages = errors
-            .Select(error => error.Message)
-            .ToList();
-        string message = string.Join(Environment.NewLine, messages);
-
-        throw new ValidationException(message);
     }
 }

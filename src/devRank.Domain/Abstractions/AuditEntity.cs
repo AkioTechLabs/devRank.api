@@ -1,4 +1,4 @@
-﻿namespace Nature.Domain.Abstractions;
+﻿namespace devRank.Domain.Abstractions;
 
 public abstract class AuditEntity : Entity
 {

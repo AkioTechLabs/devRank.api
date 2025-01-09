@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <PackageReference Include="FastResults" Version="1.0.3" />
+      <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="SecureIdentity" Version="1.0.4" />
     </ItemGroup>
 
     <ItemGroup>

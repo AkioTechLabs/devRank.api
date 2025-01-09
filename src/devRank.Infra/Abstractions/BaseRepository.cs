@@ -1,7 +1,7 @@
-﻿using devRank.Domain.Abstractions.Contracts;
+﻿using devRank.Domain.Abstractions;
+using devRank.Domain.Abstractions.Contracts;
 using devRank.Infra.Data;
 using Microsoft.EntityFrameworkCore;
-using Nature.Domain.Abstractions;
 
 namespace devRank.Infra.Abstractions;
 
@@ -10,8 +10,7 @@ public class BaseRepository<TEntity>(DevRankContext context)
     where TEntity : Entity
 {
     public TEntity Inserir(
-        TEntity entity,
-        CancellationToken cancellationToken)
+        TEntity entity)
     {
         context
             .Set<TEntity>()
@@ -21,8 +20,7 @@ public class BaseRepository<TEntity>(DevRankContext context)
     }
 
     public TEntity Atualizar(
-        TEntity entity,
-        CancellationToken cancellationToken)
+        TEntity entity)
     {
         context
             .Set<TEntity>()
