@@ -1,4 +1,5 @@
 ﻿using devRank.Application.Abstractions.Contracts;
+using devRank.Application.Responses.Perfil;
 
 namespace devRank.Application.Requests.Perfil;
 

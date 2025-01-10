@@ -82,7 +82,7 @@ public sealed class UsuarioPonto() : AuditEntity
                 Movimento = TipoMovimento.Perder;
                 break;
 
-            case TipoPonto.ReprovacaoRepetidads:
+            case TipoPonto.ReprovacaoRepetidas:
             case TipoPonto.Retrabalho:
                 Ponto = 5;
                 Movimento = TipoMovimento.Perder;

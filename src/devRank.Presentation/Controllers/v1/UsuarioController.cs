@@ -3,6 +3,8 @@ using devRank.Application.Requests.Usuario;
 using devRank.Application.Responses.Auth;
 using devRank.Application.Responses.Usuario;
 using devRank.Presentation.Abstractions;
+using devRank.Presentation.Filters.Auth;
+using devRank.Shared.Enums.Permissao;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,8 +19,12 @@ public class UsuarioController(ISender sender) : ApiController(sender)
     /// <param name="request">Dados para criação do usuario.</param>
     /// <param name="cancellationToken">Token para cancelamento da operação.</param>
     /// <returns>Retorna as informações de login.</returns>
+    /// <remarks>
+    /// Requer a permissão: <b>CriarUsuario</b>
+    /// </remarks>
     [HttpPost("criar")]
     [ProducesResponseType(typeof(LoginResponse), statusCode: StatusCodes.Status201Created)]
+    [Permissao(NivelPermissao.CriarUsuario)]
     public async Task<ActionResult<LoginResponse>> Criar(
         [FromBody] CriarUsuarioRequest request,
         CancellationToken cancellationToken)
@@ -33,8 +39,12 @@ public class UsuarioController(ISender sender) : ApiController(sender)
     /// <param name="request">Dados para obter o usuario.</param>
     /// <param name="cancellationToken">Token para cancelamento da operação.</param>
     /// <returns>Retorna as informações completas do usuario.</returns>
+    /// <remarks>
+    /// Requer a permissão: <b>ObterUsuario</b>
+    /// </remarks>
     [HttpGet("id")]
     [ProducesResponseType(typeof(UsuarioResponse), statusCode: StatusCodes.Status200OK)]
+    [Permissao(NivelPermissao.ObterUsuario)]
     public async Task<ActionResult<UsuarioResponse>> ObterPorId(
         [FromQuery] ObterUsuarioPorIdRequest request,
         CancellationToken cancellationToken)
@@ -49,8 +59,12 @@ public class UsuarioController(ISender sender) : ApiController(sender)
     /// <param name="request">Dados para obter o usuario.</param>
     /// <param name="cancellationToken">Token para cancelamento da operação.</param>
     /// <returns>Retorna as informações resumidas do usuario.</returns>
+    /// <remarks>
+    /// Requer a permissão: <b>ObterUsuario</b>
+    /// </remarks>
     [HttpGet("email")]
     [ProducesResponseType(typeof(UsuarioResponse), statusCode: StatusCodes.Status200OK)]
+    [Permissao(NivelPermissao.ObterUsuario)]
     public async Task<ActionResult<UsuarioResponse>> ObterPorEmail(
         [FromQuery] ObterUsuarioPorEmailRequest request,
         CancellationToken cancellationToken)
@@ -65,8 +79,12 @@ public class UsuarioController(ISender sender) : ApiController(sender)
     /// <param name="request">Dados para atualizar o usuario.</param>
     /// <param name="cancellationToken">Token para cancelamento da operação.</param>
     /// <returns>Retorna as informações resumidas do usuario.</returns>
+    /// <remarks>
+    /// Requer a permissão: <b>AlterarUsuario</b>
+    /// </remarks>
     [HttpPut("atualizar")]
     [ProducesResponseType(typeof(UsuarioResponse), statusCode: StatusCodes.Status200OK)]
+    [Permissao(NivelPermissao.AlterarUsuario)]
     public async Task<ActionResult<UsuarioResponse>> Atualizar(
         [FromBody] AtualizarUsuarioRequest request,
         CancellationToken cancellationToken)

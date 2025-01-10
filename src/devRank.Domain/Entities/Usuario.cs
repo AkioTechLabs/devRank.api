@@ -18,7 +18,7 @@ public sealed class Usuario() : AuditEntity
     #region Prop. Aux
 
     public Perfil Perfil { get; private set; }
-    public ICollection<UsuarioPonto> UsuarioPonto { get; private set; }
+    public ICollection<UsuarioPonto> UsuarioPonto { get; set; } = [];
 
     #endregion Prop. Aux
 

@@ -11,7 +11,7 @@ public sealed class Perfil() : AuditEntity
     #region Ref. Foreing Key
 
     public ICollection<Usuario> Usuario { get; set; } = [];
-    public ICollection<PerfilPermissao> PerfilPermissao { get; set; } = []; 
+    public ICollection<PerfilPermissao> PerfilPermissao { get; set; } = [];
 
     #endregion Ref. Foreing Key
 
@@ -31,6 +31,14 @@ public sealed class Perfil() : AuditEntity
 
     protected override void Validar()
     {
+    }
+
+    public void AtribuirPermissao(List<long> ids)
+    {
+        foreach (var id in ids)
+        {
+            PerfilPermissao.Add(new (id));
+        }
     }
 
     #endregion Methods

@@ -1,5 +1,6 @@
 ﻿using devRank.Application.Abstractions;
 using devRank.Application.Requests.Perfil;
+using devRank.Application.Responses.Perfil;
 using devRank.Domain.Contracts.Repositories;
 using devRank.Domain.Entities;
 using devRank.Shared.Messages;
@@ -29,6 +30,11 @@ public class CriarPerfilUseCase(
         }
 
         var perfil = request.Adapt<Perfil>();
+
+        perfil.PerfilPermissao.Clear();
+        perfil.AtribuirPermissao(request.PerfilPermissao
+            .Select(x => x.IdPermissao)
+            .ToList());
 
         perfilRepository.Inserir(perfil);
         await unitOfWork.SaveChangesAsync(cancellationToken);

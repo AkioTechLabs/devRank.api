@@ -22,7 +22,7 @@ public class EsqueceSuaSenhaUseCase(
         EsqueceSuaSenhaRequest request,
         CancellationToken cancellationToken)
     {
-        var usuario = await usuarioRepository.ObterPorId(request.UsuarioId, cancellationToken);
+        var usuario = await usuarioRepository.ObterPorId(request.Id, cancellationToken);
         if (usuario is null)
         {
             return BaseResultExtension<LoginResponse>.NenhumRegistro;

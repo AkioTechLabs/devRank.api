@@ -35,7 +35,7 @@ public enum TipoPonto
     FaltaComunicao = 10,
 
     [Description("Reprovação repetida em mais de um pr")]
-    ReprovacaoRepetidads = 11,
+    ReprovacaoRepetidas = 11,
 
     [Description("Retrabalho sendo feito")]
     Retrabalho = 12

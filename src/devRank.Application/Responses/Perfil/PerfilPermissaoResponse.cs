@@ -1,4 +1,4 @@
-﻿namespace devRank.Application.Requests.Perfil;
+﻿namespace devRank.Application.Responses.Perfil;
 
 public record PerfilPermissaoResponse(
     int PermissaoId,

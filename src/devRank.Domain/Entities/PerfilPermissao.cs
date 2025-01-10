@@ -21,10 +21,8 @@ public sealed class PerfilPermissao() : AuditEntity
     #region Constructors
 
     public PerfilPermissao(
-        long idPerfil, 
         long idPermissao) : this()
     {
-        PerfilId = idPerfil;
         PermissaoId = idPermissao;
     }
 

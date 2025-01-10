@@ -1,8 +1,8 @@
 ﻿namespace devRank.Shared.Dtos.Perfil;
 
 public record PerfilDto(
-    long PerfilId,
-    string PerfilDescricao,
+    long Id,
+    string Descricao,
     List<PerfilPermissaoDto> Permissoes);
     
 public record PerfilPermissaoDto(

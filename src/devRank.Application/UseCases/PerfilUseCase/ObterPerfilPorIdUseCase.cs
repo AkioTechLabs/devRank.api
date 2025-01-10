@@ -1,5 +1,6 @@
 ﻿using devRank.Application.Abstractions;
 using devRank.Application.Requests.Perfil;
+using devRank.Application.Responses.Perfil;
 using devRank.Domain.Contracts.Repositories;
 using devRank.Shared.Extensions;
 using FastResults.Results;

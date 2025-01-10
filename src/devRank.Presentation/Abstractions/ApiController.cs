@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace devRank.Presentation.Abstractions;
 
+[Authorize]
 [ProducesErrorResponseType(typeof(Error))]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(Error), StatusCodes.Status401Unauthorized)]

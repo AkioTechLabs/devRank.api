@@ -1,6 +1,6 @@
-﻿namespace devRank.Application.Requests.Perfil;
+﻿namespace devRank.Application.Responses.Perfil;
 
 public record PerfilResponse(
-    int PerfilId,
-    string PerfilDescricao,
+    int Id,
+    string Descricao,
     List<PerfilPermissaoResponse> Permissoes);

@@ -1,4 +1,6 @@
-﻿using devRank.Presentation.Options;
+﻿using devRank.Infra.Auth.Handlers;
+using devRank.Infra.Auth.Providers;
+using devRank.Presentation.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -14,10 +16,11 @@ public static class AuthConfiguration
             option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer();
 
+        services.AddScoped<IAuthorizationHandler, AuthPermissaoHandler>();
+        services.AddSingleton<IAuthorizationPolicyProvider, PermissaoAuthPoliceProvider>();
         services.ConfigureOptions<JwtSetupOptions>();
         services.ConfigureOptions<JwtBearerSetupOptions>();
 
-        return services;
 
         return services;
     }
