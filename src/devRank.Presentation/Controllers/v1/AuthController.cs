@@ -37,7 +37,7 @@ public class AuthController(ISender sender) : ApiController(sender)
     [HttpPost("refresh-token")]
     [ProducesResponseType(typeof(LoginResponse), statusCode: StatusCodes.Status201Created)]
     [AllowAnonymous]
-    public async Task<ActionResult<LoginResponse>> Login(
+    public async Task<ActionResult<LoginResponse>> RefreshToken(
         [FromBody] RefreshTokenRequest request,
         CancellationToken cancellationToken)
     {

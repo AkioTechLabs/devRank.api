@@ -12,7 +12,7 @@ using devRank.Infra.Data;
 namespace devRank.Infra.Migrations
 {
     [DbContext(typeof(DevRankContext))]
-    [Migration("20250109000242_Initial")]
+    [Migration("20250204112109_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -104,6 +104,9 @@ namespace devRank.Infra.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("Avaliado")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("DataAlteracao")
                         .HasColumnType("datetime2");
 
@@ -132,6 +135,47 @@ namespace devRank.Infra.Migrations
                     b.HasIndex("PerfilId");
 
                     b.ToTable("Usuario", (string)null);
+                });
+
+            modelBuilder.Entity("devRank.Domain.Entities.UsuarioPonto", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataAlteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Movimento")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observacao")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("Ponto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UsuarioId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("UsuarioPonto", (string)null);
                 });
 
             modelBuilder.Entity("devRank.Domain.Entities.PerfilPermissao", b =>
@@ -164,6 +208,17 @@ namespace devRank.Infra.Migrations
                     b.Navigation("Perfil");
                 });
 
+            modelBuilder.Entity("devRank.Domain.Entities.UsuarioPonto", b =>
+                {
+                    b.HasOne("devRank.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("UsuarioPonto")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("devRank.Domain.Entities.Perfil", b =>
                 {
                     b.Navigation("PerfilPermissao");
@@ -174,6 +229,11 @@ namespace devRank.Infra.Migrations
             modelBuilder.Entity("devRank.Domain.Entities.Permissao", b =>
                 {
                     b.Navigation("PerfilPermissao");
+                });
+
+            modelBuilder.Entity("devRank.Domain.Entities.Usuario", b =>
+                {
+                    b.Navigation("UsuarioPonto");
                 });
 #pragma warning restore 612, 618
         }
