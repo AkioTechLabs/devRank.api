@@ -55,6 +55,16 @@ public sealed class UsuarioPonto() : AuditEntity
                 Movimento = TipoMovimento.Ganhar;
                 break;
 
+            case TipoPonto.Colaboracao:
+                Ponto = 2;
+                Movimento = TipoMovimento.Ganhar;
+                break;
+
+            case TipoPonto.FastCodes:
+                Ponto = 5;
+                Movimento = TipoMovimento.Ganhar;
+                break;
+
             case TipoPonto.ReprovadoPullRequest:
             case TipoPonto.ReprovadoTeste:
             case TipoPonto.PrDemoradoOuAtrasoTask:
@@ -65,16 +75,6 @@ public sealed class UsuarioPonto() : AuditEntity
             case TipoPonto.ForaDoPadrao:
                 Ponto = ponto;
                 Movimento = TipoMovimento.Perder;
-                break;
-
-            case TipoPonto.Colaboracao:
-                Ponto = 2;
-                Movimento = TipoMovimento.Ganhar;
-                break;
-
-            case TipoPonto.FastCodes:
-                Ponto = 5;
-                Movimento = TipoMovimento.Ganhar;
                 break;
 
             case TipoPonto.FaltaComunicao:
@@ -91,7 +91,6 @@ public sealed class UsuarioPonto() : AuditEntity
             default:
                 throw new ArgumentOutOfRangeException(nameof(Tipo), $"Tipo de ponto inválido: {Tipo}");
         }
-
     }
 
     protected override void Validar()
