@@ -21,7 +21,6 @@ public static class AuthConfiguration
         services.ConfigureOptions<JwtSetupOptions>();
         services.ConfigureOptions<JwtBearerSetupOptions>();
 
-
         return services;
     }
 }
