@@ -19,6 +19,6 @@ public class JwtBearerSetupOptions(IOptions<AuthConfiguracaoDto> options) : IPos
         optionsSetup.TokenValidationParameters.ValidateLifetime = true;
         optionsSetup.TokenValidationParameters.ValidateIssuerSigningKey = true;
         optionsSetup.TokenValidationParameters.IssuerSigningKey =
-            new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_options.Key));
+            new SymmetricSecurityKey(Encoding.ASCII.GetBytes("TmFvQWRpYW50YU5hb1NlVGFOb0Rldk1ldUlybWFv"));
     }
 }
