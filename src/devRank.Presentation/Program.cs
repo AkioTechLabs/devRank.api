@@ -9,8 +9,8 @@ var app = builder.Build();
 
 app.UseExceptionHandler(o => { });
 app.UseHttpsRedirection();
-// app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseCors("Productions");
 app.UseSwaggerDocumentacao();
 app.MapControllers();
