@@ -31,7 +31,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IE
                 break;
             default:
                 httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                await httpContext.Response.WriteAsJsonAsync(exception.Message,
+                await httpContext.Response.WriteAsJsonAsync(DevRankError.Comum.ErroInterno,
                     cancellationToken);
                 break;
         }

@@ -18,7 +18,7 @@ public static class ApiConfiguration
         services.AdicionarBancoDeDados(configuration);
         services.AdicionarIoC();
         services.AdicionarMediator();
-        // services.AdicionarAutentificacao();
+        services.AdicionarAutentificacao();
         services.AddExceptionHandler<GlobalExceptionHandler>();
 
         return services;

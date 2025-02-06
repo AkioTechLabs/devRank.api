@@ -10,12 +10,10 @@ public static class AuthConfiguration
 {
     public static IServiceCollection AdicionarAutentificacao(this IServiceCollection services)
     {
-        services.AddAuthentication(option =>
-        {
-            option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer();
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer();
 
+        services.AddAuthorization();
         services.AddScoped<IAuthorizationHandler, AuthPermissaoHandler>();
         services.AddSingleton<IAuthorizationPolicyProvider, PermissaoAuthPoliceProvider>();
         services.ConfigureOptions<JwtSetupOptions>();
