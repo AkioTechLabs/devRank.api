@@ -13,8 +13,7 @@ public static class AuthConfiguration
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer();
 
-        services.AddAuthorization();
-        services.AddSingleton<IAuthorizationHandler, AuthPermissaoHandler>();
+        services.AddScoped<IAuthorizationHandler, AuthPermissaoHandler>();
         services.AddSingleton<IAuthorizationPolicyProvider, PermissaoAuthPoliceProvider>();
         services.ConfigureOptions<JwtSetupOptions>();
         services.ConfigureOptions<JwtBearerSetupOptions>();
