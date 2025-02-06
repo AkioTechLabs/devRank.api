@@ -13,12 +13,12 @@ public class JwtBearerSetupOptions(IOptions<AuthConfiguracaoDto> options) : IPos
     public void PostConfigure(string? name, JwtBearerOptions optionsSetup)
     {
         optionsSetup.TokenValidationParameters.ValidateIssuer = true;
-        optionsSetup.TokenValidationParameters.ValidIssuer = "TmF0dXJlQnJhYm8";
+        optionsSetup.TokenValidationParameters.ValidIssuer = _options.KeyIssuer;
         optionsSetup.TokenValidationParameters.ValidateAudience = true;
-        optionsSetup.TokenValidationParameters.ValidAudience = "https://github.com/OrganizacaoTesteSum/devRank.api";
+        optionsSetup.TokenValidationParameters.ValidAudience = _options.KeyAudience;
         optionsSetup.TokenValidationParameters.ValidateLifetime = true;
         optionsSetup.TokenValidationParameters.ValidateIssuerSigningKey = true;
         optionsSetup.TokenValidationParameters.IssuerSigningKey =
-            new SymmetricSecurityKey("TmFvQWRpYW50YU5hb1NlVGFOb0Rldk1ldUlybWFv"u8.ToArray());
+            new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_options.Key));
     }
 }
