@@ -29,4 +29,12 @@ public class UsuarioRepository(DevRankContext context) :
             .Include(u => u.Perfil)
             .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
     }
+
+    public async Task<List<Usuario>> ObterUsuarioAvaliados(CancellationToken cancellationToken)
+    {
+        return await context.Usuario
+            .AsNoTracking()
+            .Where(u => u.Ativo && u.Avaliado)
+            .ToListAsync(cancellationToken);
+    }
 }

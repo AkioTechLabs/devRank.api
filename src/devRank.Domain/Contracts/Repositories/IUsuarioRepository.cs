@@ -7,4 +7,5 @@ public interface IUsuarioRepository : IBaseRepository<Usuario>
 {
     Task<Usuario?> ObterPorEmail(string email, CancellationToken cancellationToken);
     Task<Usuario?> ObterPorIdComDependencias(long id, CancellationToken cancellationToken);
+    Task<List<Usuario>> ObterUsuarioAvaliados(CancellationToken cancellationToken);
 }

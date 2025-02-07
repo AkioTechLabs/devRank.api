@@ -32,7 +32,7 @@ public class UsuarioController(ISender sender) : ApiController(sender)
         var result = await sender.Send(request, cancellationToken);
         return Response(result, HttpStatusCode.Created);
     }
-    
+
     /// <summary>
     /// Rota para obter o usuario pelo Id.
     /// </summary>
@@ -52,7 +52,7 @@ public class UsuarioController(ISender sender) : ApiController(sender)
         var result = await sender.Send(request, cancellationToken);
         return Response(result);
     }
-    
+
     /// <summary>
     /// Rota para obter o usuario pelo email.
     /// </summary>
@@ -72,7 +72,7 @@ public class UsuarioController(ISender sender) : ApiController(sender)
         var result = await sender.Send(request, cancellationToken);
         return Response(result);
     }
-    
+
     /// <summary>
     /// Rota para atualizar o usuario.
     /// </summary>
@@ -90,6 +90,24 @@ public class UsuarioController(ISender sender) : ApiController(sender)
         CancellationToken cancellationToken)
     {
         var result = await sender.Send(request, cancellationToken);
+        return Response(result);
+    }
+
+    /// <summary>
+    /// Rota para obter usuarios avaliados.
+    /// </summary>
+    /// <param name="cancellationToken">Token para cancelamento da operação.</param>
+    /// <returns>Retorna as informações resumidas dos usuarios.</returns>
+    /// <remarks>
+    /// Requer a permissão: <b>ObterUsuario</b>
+    /// </remarks>
+    [HttpGet("avaliados")]
+    [ProducesResponseType(typeof(List<UsuarioResponse>), statusCode: StatusCodes.Status200OK)]
+    [Permissao(NivelPermissao.ObterUsuario)]
+    public async Task<ActionResult<List<UsuarioResponse>>> ObterPorAvaliados(
+        CancellationToken cancellationToken)
+    {
+        var result = await sender.Send(new ObterUsuarioPorAvaliadosRequest(), cancellationToken);
         return Response(result);
     }
 }
